@@ -246,9 +246,10 @@ function DetailView({ record, navigate, onOpenViewer }: {
 }) {
   const sourceDoc = docById(record.doc);
   if (!sourceDoc) return null;
+  const sourceDocTitle = sourceDoc.title;
 
   async function copyReference() {
-    const reference = `[EXEMPLO FICTÍCIO] ${record.title}. ${CONTRACT.supplier}. Contrato ${CONTRACT.contract}. ${sourceDoc.title}, ${record.place}.`;
+    const reference = `[EXEMPLO FICTÍCIO] ${record.title}. ${CONTRACT.supplier}. Contrato ${CONTRACT.contract}. ${sourceDocTitle}, ${record.place}.`;
     try {
       if (!navigator.clipboard?.writeText) throw new Error("Clipboard API indisponível");
       await navigator.clipboard.writeText(reference);
